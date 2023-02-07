@@ -1,0 +1,42 @@
+.carousel-container {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 40px;
+}
+.card-carousel {
+  display: flex;
+  flex-direction: column;  
+  height: 370px; 
+  width: 231px;
+}
+.card-carousel img{
+    width: 231px;
+    height: 285px;
+}
+.card-item-name{
+    font-size: 14px;
+    padding: 10px;
+    text-align: center;
+    color: #404040;
+}
+.card-item-price{
+    color: #c94200;
+    text-align: center;
+}
+.survivor-tee{
+    text-align: center;
+    margin-top: 2rem;
+}
+.survivor-tee span{
+    font-size: 2rem;
+    color: #303030;
+    display: inline-block;
+    padding: 14px;
+}
+.survivor-tee p{
+    font-size: 1rem;
+    padding: 6px;
+    color: #404040;
+}

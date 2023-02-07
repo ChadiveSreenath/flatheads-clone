@@ -1,0 +1,45 @@
+.goal-container{
+    text-align: center;
+    padding: 2rem;
+}
+.edition-container span{
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: inline-block;
+    padding: 1rem;
+}
+.edition-container p{
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    color: #404040;
+}
+.meter-container{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    /* text-align: center; */
+    align-items: center;
+}
+meter{
+    width: 60vw;
+    height: 40px;
+    margin: auto;
+}
+meter::-webkit-meter-optimum-value {
+    background: #009E74;;
+}
+.meter-container span{
+    font-weight: 600;
+    font-size: 2rem;
+   color: #009E74;
+   text-align: center;
+}
+.meter-container p{
+    padding: 0.25rem 1.25rem;
+    color: #404040;
+}
+.stats{
+    align-self: flex-start;
+    margin-left: 16vw;
+}
+

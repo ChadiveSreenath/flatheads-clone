@@ -1,0 +1,45 @@
+.swiper-section {
+  display: flex;
+  gap: 15px;
+  padding: 0 2rem 2rem;
+  overflow-x: auto;
+}
+.world-first{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #303030;
+}
+.swiper-slider {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+}
+.swiper-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 0  2rem 2rem;
+
+}
+.swiper-text div:first-child {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: inherit;
+}
+.swiper-text p {
+   line-height: 24px; 
+}
+.swiper-text button{
+    color: #1C1D1D;
+    background-color: #fdd300;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    padding: 16px 40px;
+    outline: none;
+    border: none;
+
+}

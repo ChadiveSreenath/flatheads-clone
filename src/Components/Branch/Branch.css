@@ -1,0 +1,48 @@
+.branches {
+  margin-top: 3rem;
+  text-align: center;
+}
+.branch-names {
+  font-size: 1.25rem;
+  color: #404040;
+  cursor: pointer;
+}
+.country-branch {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  gap: 3%;
+}
+.country-store :hover{
+  color: #404040;
+}
+.country-store {
+  display: flex;
+  flex-direction: column;
+}
+.country {
+  font-size: 2rem;
+  color: #000000;
+  cursor: pointer;
+}
+.store {
+  font-size: 14px;
+  padding: 1rem;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
+.textarea {
+  text-align: center;
+}
+.textarea span {
+  font-size: 1.75rem;
+  color: black;
+  font-weight: 700;
+  display: inline-block;
+  padding: 13px;
+}
+.textarea p {
+  font-size: 1rem;
+  padding: 6px;
+}

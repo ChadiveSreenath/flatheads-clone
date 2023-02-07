@@ -1,0 +1,91 @@
+.footer {
+  height: 500px;
+  width: 100%;
+  display: grid;
+  color: #000000;
+  margin-top: 20px;
+  background-color: #fafafa;
+}
+.footer-top {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.footer-contact-items {
+  display: grid;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #404040;
+}
+.footer-contact-items span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-help-items {
+  display: grid;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #404040;
+}
+.footer-help-items span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-shop-items {
+  font-size: 0.85rem;
+  color: #404040;
+  display: grid;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+.footer-shop-items span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-about-items {
+  font-size: 0.85rem;
+  display: grid;
+  color: #404040;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+}
+.footer-about-items span:hover  {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.p-tag {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #404040;
+}
+.p-tag:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.footer-bottom {
+  display: grid;
+  width: 81%;
+  margin: auto;
+}
+.hr-line {
+  height: 1px;
+  width: 100%;
+  background-color: #000000;
+  border: 1px solid black;
+}
+.bottom-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-top: 12px;
+}
+.icons-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
