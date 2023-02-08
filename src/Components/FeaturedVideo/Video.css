@@ -1,0 +1,40 @@
+.video-image {
+  /* display: flex; */
+  padding: 2rem 3rem;
+}
+.video-cont {
+  flex: 1;
+}
+.video-cont video {
+  height: 100%;
+  width: 100%;
+}
+.featured-on {
+  flex: 1;
+  background: #f5f7f7;
+}
+.featured-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #303030;
+  text-align: center;
+  padding: 1rem 2rem 0  ;
+}
+.image-wrapper {
+  padding: 0rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.image-wrapper .featured-images {
+  width: 33%;
+  object-fit: contain;
+}
+@media (min-width: 768px) {
+  .video-image {
+    display: flex;
+    padding: 2rem 3rem;
+    gap: 1.25rem;
+  }
+}

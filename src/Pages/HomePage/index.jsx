@@ -4,26 +4,26 @@ import BrandStory from '../../Components/BrandStory/BrandStory'
 import { CardCarousel, TextAreaTee } from '../../Components/CardCarousel/CardCarousel'
 import BigCarousel from '../../Components/Carousel/Carousel'
 import CustomerReview from '../../Components/CustomerReview/CustomerReview'
-import Footer from '../../Components/Footer/Footer'
+import VideoCont from '../../Components/FeaturedVideo'
 import Goal from '../../Components/Goal/Goal'
 import Swiper from '../../Components/Swiper/Swiper'
-import ResponsiveAppBar from '../../Components/Topbar/Topbar'
 import './styles.css'
 
 const HomePage = () => {
     return (
         <div className='body'>
-            <ResponsiveAppBar />
+            {/* <ResponsiveAppBar /> */}
             <BigCarousel />
             <Branch />
-            <CardCarousel />
+            {/* <CardCarousel /> */}
             <TextAreaTee />
-            <CardCarousel />
-            <CustomerReview />
-            <Swiper />
+            {/* <CardCarousel /> */}
             <Goal />
             <BrandStory />
-            <Footer />
+            <Swiper />
+            <CustomerReview />
+            <VideoCont />
+            {/* <Footer /> */}
         </div>
     )
 }
