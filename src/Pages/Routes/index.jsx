@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Routes } from "react-router-dom"
+import Footer from '../../Components/Footer/Footer'
+import ResponsiveAppBar from '../../Components/Topbar/Topbar'
 import CheckOut from '../CheckOut/Index'
 import HomePage from '../HomePage'
 import Login from '../Login/Index'
@@ -12,6 +14,7 @@ import Signup from '../Signup/Index'
 const NavigationRoutes = () => {
     return (
         <div>
+            <ResponsiveAppBar />
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/login' element={<Login />} />
@@ -22,6 +25,7 @@ const NavigationRoutes = () => {
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/order-details' element={<OrderDetails />} />
             </Routes>
+            <Footer />
         </div>
     )
 }

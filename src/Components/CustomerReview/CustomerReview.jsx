@@ -32,7 +32,7 @@ const CustomerReview = () => {
       <div className='customer-details'>
         {
           customerRating.map((item) => (
-            <div className='rating-card'>
+            <div className='rating-card' >
               <span>
                 <Rating name="read-only" value={5} readOnly sx={{ color: "#d3b38a" }} />
               </span><br />
