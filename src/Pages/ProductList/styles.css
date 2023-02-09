@@ -1,0 +1,38 @@
+.product-details-container{
+    padding: 1rem 5rem;
+}
+.product-heading{
+    font-size: 1.75rem;
+    color: #404040;
+    padding: 2rem 1rem;
+}
+.products-container{
+    display: flex;
+    gap: 2rem;
+}
+.accordion-text{
+    margin: 10px;
+    font-weight: 600;
+    color: #404040;
+}
+.products-filters{
+    width: 33vw;
+    border: none;
+}
+.product-card{
+    display:flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+@media (max-width:446px){
+    .products-container{
+        display: grid;
+        gap: 2rem;
+    }
+    .products-filters{
+        width: 69vw;
+        border: none;
+    }
+}
+

@@ -13,5 +13,9 @@ body {
 }
 
 .css-19r6kue-MuiContainer-root {
-  padding-left: 0 !important;
+  padding-left: 0.5rem !important;
+}
+
+.main-content {
+  margin-top: 3.75rem;
 }

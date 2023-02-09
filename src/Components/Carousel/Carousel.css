@@ -1,6 +1,5 @@
 .carousel-wrapper {
   gap: 10px;
-  margin-top: 3.75rem;
 }
 .carousel-wrapper > div {
   flex: 1;

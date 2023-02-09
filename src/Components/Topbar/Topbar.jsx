@@ -11,6 +11,8 @@ import SwipeableTemporaryDrawer from './Drawer';
 import BasketIcon from '../../Assets/Icons/BasketIcon';
 import PersonIcon from '../../Assets/Icons/PersonIcon';
 import Logo from "../../Assets/flatheads-logo.webp"
+import { Link } from 'react-router-dom';
+import './Topbar.css'
 
 const pages = ['Shop', 'Limited Edition(New)', 'Shoes', "Classics", "About", "Help"];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -39,11 +41,15 @@ function ResponsiveAppBar() {
                             <MenuIcon />
                         </IconButton>
                     </Box>
-                    <Typography
-                    >
-                        <img src={Logo} alt="" />
-                    </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'center', gap: '.5rem' } }}>
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'flex' } }}>
+                        <Link to="/" >
+                            <img src={Logo} alt="" />
+                        </Link>
+                    </Box>
+
+
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', gap: '.5rem' } }}>
                         {pages.map((page) => (
                             <Button
                                 disableRipple
@@ -58,8 +64,10 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: "10px" }}>
-                        <div>
-                            <PersonIcon />
+                        <div className='disable-focus'>
+                            <Link to="/login" >
+                                <PersonIcon />
+                            </Link>
                         </div>
                         <div onClick={() => toggleCart()}>
                             <BasketIcon />
