@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Image1 from "../../Assets/SwiperImages/image_1.jpeg"
 import Image2 from "../../Assets/SwiperImages/image_2.jpeg"
 import Image3 from "../../Assets/SwiperImages/image_3.jpeg"
@@ -45,7 +46,9 @@ const Swiper = () => {
                             <div className='swiper-text'>
                                 <div>{item.shoeName}</div>
                                 <p>{item.heading}</p>
-                                <button>Shop Now</button>
+                                <Link to="/shoes" style={{ textDecoration: 'none' }}>
+                                    <button>Shop Now</button>
+                                </Link>
                             </div>
                         </div>
                     ))

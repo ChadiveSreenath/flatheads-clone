@@ -1,44 +1,36 @@
 import React from "react"
 import "./CardCarousel.css"
 import 'react-slideshow-image/dist/styles.css';
+import { Slide } from "react-slideshow-image";
+import { Link } from "react-router-dom";
+import ProData from "../../data.json"
 
 
-const CardCarousel = () => {
-
-    const Image = [
-        {
-            src: "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/3_cbb11308-d483-4164-a19b-1b3a9c842541_500x500.jpg?v=1674788412",
-            name: " Day Zero Vedic V-Neck Mandarin Collar Shirt",
-            price: "Rs. 699"
-        },
-        {
-            src: "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/3_cbb11308-d483-4164-a19b-1b3a9c842541_500x500.jpg?v=1674788412",
-            name: " Day Zero Vedic V-Neck Mandarin Collar Shirt",
-            price: "Rs. 699"
-        },
-        {
-            src: "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/3_cbb11308-d483-4164-a19b-1b3a9c842541_500x500.jpg?v=1674788412",
-            name: " Day Zero Vedic V-Neck Mandarin Collar Shirt",
-            price: "Rs. 699"
-        },
-    ]
-
+const CardCarousel = ({handleClick}) => {
 
     return (
-        <div className="carousel-container">
-            {
-                Image.map((item, i) => (
-                    <div className="card-carousel" key={i}>
-                        <img src={item.src} alt="" />
-                        <span className="card-item-name">{item.name}</span>
-                        <span className="card-item-price">{item.price}</span>
-                    </div>
-                ))
-            }
+        <div className='recommendation-slider'>
+            <Slide slidesToShow={4}>
+                {
+                    ProData.mensdata.map((item, i) => (
+                        <div key={i} className="slider-items" >
+                            <div>
+                                <Link to={`/products/${item.id}`}>
+                                    <img src={item.img} alt="" width="100%" style={{ cursor: "pointer" }} onClick={() => handleClick(item)} />
+                                </Link>
+                            </div>
+                            <div>
+                                <span>{item.name}</span>
+                                <span style={{ color: "#404040" }}>{`Rs ${item.original_price}`}</span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </Slide >
         </div>
     );
-
 };
+
 
 const TextAreaTee = () => {
     return (

@@ -10,20 +10,18 @@ import Swiper from '../../Components/Swiper/Swiper'
 import './styles.css'
 
 const HomePage = () => {
+    
     return (
         <div className='body'>
-            {/* <ResponsiveAppBar /> */}
             <BigCarousel />
             <Branch />
-            {/* <CardCarousel /> */}
+            <CardCarousel />
             <TextAreaTee />
-            {/* <CardCarousel /> */}
             <Goal />
             <BrandStory />
             <Swiper />
             <CustomerReview />
             <VideoCont />
-            {/* <Footer /> */}
         </div>
     )
 }

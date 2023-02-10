@@ -5,6 +5,7 @@ import "../Carousel/Carousel.css"
 import Image1 from "../../Assets/BigCarousel/Flatheads_Bannerimag1.webp"
 import Image2 from "../../Assets/BigCarousel/bannerimagenot.webp"
 import Image3 from "../../Assets/BigCarousel/flatheads-not-out-edition-imag3.jpg"
+import { Link } from 'react-router-dom';
 
 
 const Images = [
@@ -48,7 +49,9 @@ const BigCarousel = () => {
               <h3>{item.heading}</h3>
               <p >{item.sub_heading_one}</p><br />
               <p >{item.sub_heading_two}</p><br />
-              <Button variant="contained" style={{ color: "black", backgroundColor: "#fdd300", fontSize: "13px", margin: "10px" }}>SHOP NOW</Button>
+              <Link to="/collections" style={{textDecoration:'none'}}>
+                <Button variant="contained" style={{ color: "black", backgroundColor: "#fdd300", fontSize: "13px", margin: "10px" }}>SHOP NOW</Button>
+              </Link>
             </div>
           </div>
         ))

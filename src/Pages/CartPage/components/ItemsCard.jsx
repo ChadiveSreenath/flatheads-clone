@@ -10,10 +10,7 @@ const ItemsCard = ({ item, index: i, updateLocalStorageData }) => {
         setCount(prev => prev + val)
     }
 
-
-
-
-
+    
     return (
         <div className='item-summary-cont' key={i}>
             <div>

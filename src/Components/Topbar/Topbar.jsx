@@ -3,7 +3,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
@@ -11,11 +10,10 @@ import SwipeableTemporaryDrawer from './Drawer';
 import BasketIcon from '../../Assets/Icons/BasketIcon';
 import PersonIcon from '../../Assets/Icons/PersonIcon';
 import Logo from "../../Assets/flatheads-logo.webp"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Topbar.css'
 
 const pages = ['Shop', 'Limited Edition(New)', 'Shoes', "Classics", "About", "Help"];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
     const [openDrawer, setOpenDrawer] = React.useState(false)
@@ -23,7 +21,25 @@ function ResponsiveAppBar() {
     const toggleDrawer = () => setOpenDrawer(prev => !prev)
     const toggleCart = () => setOpenCart(prev => !prev)
 
+    const history = useNavigate();
 
+    const handleNavigate = (page) => {
+        if(page==="Shoes"){
+            history("/shoes")
+        }   
+        else if(page==="Shop"){
+            history("/products")
+        }
+        else if(page==="Classics"){
+            history("/Collections")
+            window.location.reload(false)
+        }
+        else if(page==="Limited Edition(New)"){
+            history("/LimitedEdition")
+            window.location.reload(false)
+        }
+        
+    }
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: "white", color: "black", height: '3.75rem', px: { md: "3rem" } }}>
@@ -59,7 +75,10 @@ function ResponsiveAppBar() {
                                 key={page}
                                 sx={{ my: 2, color: 'black', display: 'block', ":hover": { backgroundColor: "inherit", textDecoration: 'underline' } }}
                             >
-                                {page}
+                                {
+                                    <p style={{ margin: "0" }} onClick={(item) => handleNavigate(page)} >{page}</p>
+                                }
+
                             </Button>
                         ))}
                     </Box>
