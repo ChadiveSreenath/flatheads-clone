@@ -86,3 +86,7 @@
     text-align: end;
     padding: 1rem 1rem ;   
 }
+.cart-count{
+  color: #303030;
+  margin-left: 6px;
+}

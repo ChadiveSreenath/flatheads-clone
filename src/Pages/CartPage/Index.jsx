@@ -19,6 +19,8 @@ const CartPage = () => {
     return price * (item?.quantity || 1)
   })
 
+  
+
   return (
     <div className="cart-section">
       <div className="cart-section-header">
@@ -42,7 +44,7 @@ const CartPage = () => {
           <div className="info-cart-wrapper">
             {
               data?.map((item, i) => (
-                <ItemsCard item={item} key={i} index={i} updateLocalStorageData={updateLocalStorageData} data={data} />
+                <ItemsCard item={item} key={i} index={i} setCartData={setCartData} updateLocalStorageData={updateLocalStorageData} data={data} />
               ))
             }
           </div>

@@ -10,11 +10,12 @@ import SwipeableTemporaryDrawer from './Drawer';
 import BasketIcon from '../../Assets/Icons/BasketIcon';
 import PersonIcon from '../../Assets/Icons/PersonIcon';
 import Logo from "../../Assets/flatheads-logo.webp"
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Topbar.css'
 import SidebarItemcard from './Components/SidebarItemcard';
 import CloseIcon from '@mui/icons-material/Close';
 import { CartDataContext } from '../../Store/DataContext';
+import { useAuth } from '../../Firebase';
 
 const pages = ['Shop', 'Limited Edition(New)', 'Shoes', "Classics", "About", "Help"];
 
@@ -75,6 +76,9 @@ function ResponsiveAppBar() {
         return price * (item?.quantity || 1)
     })
 
+    const location = useLocation();
+    const currentUser = useAuth()
+
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: "white", color: "black", height: '3.75rem', px: { md: "3rem" } }}>
@@ -118,14 +122,36 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: "10px" }}>
-                        <div className='disable-focus'>
-                            <Link to="/login" >
-                                <PersonIcon />
-                            </Link>
-                        </div>
-                        <div onClick={() => toggleCart()}>
-                            <BasketIcon />
-                        </div>
+
+                        {
+                            currentUser == null || undefined ?
+                                <div className='disable-focus'>
+                                    <Link to="/login" >
+                                        <PersonIcon />
+
+                                    </Link>
+                                </div>
+                                :
+                                <div className='disable-focus'>
+                                    <Link to="/logout" >
+                                        <PersonIcon />
+                                    </Link>
+                                </div>
+                        }
+
+
+                        {
+                            location.pathname === "/cart" ?
+                                <div onClick={() => toggleCart()} style={{ display: "none" }}>
+                                    <BasketIcon />
+                                </div>
+                                :
+                                <div onClick={() => toggleCart()} style={{ display: "flex", alignItems: "center", cursor: "pointer" }} >
+                                    <BasketIcon />
+                                    <p className='cart-count'>{`${data?.length || 0}`}</p>
+                                </div>
+                        }
+
                     </Box>
                     <SwipeableTemporaryDrawer toggleDrawer={() => toggleDrawer()} open={openDrawer}>
                         <div className="mobile-menu-container">
@@ -149,7 +175,8 @@ function ResponsiveAppBar() {
                             </div>
                         </div>
                     </SwipeableTemporaryDrawer>
-                    <SwipeableTemporaryDrawer toggleDrawer={() => toggleCart()} open={openCart} anchor='right' >
+
+                    <SwipeableTemporaryDrawer toggleDrawer={() => toggleCart()} open={openCart} anchor='right'  >
 
                         <div className="cart-drawer-header">
                             <p>Cart</p>
@@ -160,7 +187,7 @@ function ResponsiveAppBar() {
                         <div className="cart-drawer-summary">
                             {
                                 data?.map((item, i) => (
-                                    <SidebarItemcard item={item} key={i} updateLocalStorageData={updateLocalStorageData} />
+                                    <SidebarItemcard item={item} key={i} updateLocalStorageData={updateLocalStorageData} setCartData={setCartData} data={data}/>
                                 ))
                             }
                         </div>
@@ -181,6 +208,7 @@ function ResponsiveAppBar() {
                             </div>
                         </div>
                     </SwipeableTemporaryDrawer>
+
                 </Toolbar>
             </Container>
         </AppBar>

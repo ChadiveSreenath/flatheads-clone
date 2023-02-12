@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import "./styles.css"
 import Logo from "../../Assets/flatheads-logo.webp"
-import { Button, Link, TextField } from '@mui/material'
+import { Button, TextField } from '@mui/material'
 import styled from 'styled-components';
 import { CartDataContext } from '../../Store/DataContext';
+import { Link } from 'react-router-dom';
 
 
 
@@ -44,13 +45,25 @@ const CheckOut = () => {
     return acc + curr
   }, 0)
 
-  // console.log(cartAmount)
+  const CountryRef = useRef()
+  const NameRef = useRef()
+  const CityRef = useRef()
+  const StateRef = useRef()
+  const PincodeRef = useRef()
+  const MobileRef = useRef()
+
+
+  const handleCheckout = () => {
+    alert("Order Placed , Check Email or Phone for Order details")
+  }
 
   return (
     <div className="checkout-container">
       <div className="details-container">
         <div className="logo-wrapper">
-          <img src={Logo} alt="" />
+          <Link to="/">
+            <img src={Logo} alt="" />
+          </Link>
         </div>
         <div className="contact-information" >
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "34.5vw" }}>
@@ -74,25 +87,25 @@ const CheckOut = () => {
         <div className="shipping-address">
           <p className='heading-info'>Shipping address</p>
           <div>
-            <CssTextField label='Enter Country/region' />
+            <CssTextField ref={CountryRef} label='Enter Country/region' />
           </div>
           <div>
-            <CssTextField label='Enter your name' />
+            <CssTextField ref={NameRef} label='Enter your name' />
           </div>
           <div>
             <CssTextField label="Apartment, suite, etc. (optional)" />
           </div>
           <div>
-            <CssTextField label='City' />
+            <CssTextField ref={CityRef} label='City' />
           </div>
           <div>
-            <CssTextField label='State' />
+            <CssTextField ref={StateRef} label='State' />
           </div>
           <div>
-            <CssTextField label='PinCode' />
+            <CssTextField ref={PincodeRef} label='PinCode' />
           </div>
           <div>
-            <CssTextField label="Enter Mobile Number" />
+            <CssTextField ref={MobileRef} label="Enter Mobile Number" />
           </div>
           <span style={{ fontSize: "0.85rem", display: "flex", margin: "0" }}>
             <input type="checkbox" />
@@ -100,10 +113,10 @@ const CheckOut = () => {
           </span>
         </div>
         <div className="footer-wrapper">
-          <Link to="/cart" style={{ textDecoration: "none" }}>
+          <Link to="/Cart" style={{ textDecoration: "none", cursor: "pointer", color: "#404040" }}>
             <p className='return-cart'> Return to Cart</p>
           </Link>
-          <Button variant="contained" style={{ color: "white", fontSize: "12px", padding: "1rem" }}>Continue to shipping</Button>
+          <Button onClick={handleCheckout} variant="contained" style={{ color: "white", fontSize: "12px", padding: "1rem" }}>Continue to shipping</Button>
         </div>
       </div>
       <div className="summary-container">

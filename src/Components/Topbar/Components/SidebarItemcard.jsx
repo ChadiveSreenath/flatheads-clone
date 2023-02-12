@@ -2,7 +2,7 @@ import React from 'react'
 
 
 
-const SidebarItemcard = ({ item, updateLocalStorageData }) => {
+const SidebarItemcard = ({ item, updateLocalStorageData, setCartData, data }) => {
 
 
     const [count, setCount] = React.useState(item.quantity || 1)
@@ -11,6 +11,11 @@ const SidebarItemcard = ({ item, updateLocalStorageData }) => {
         if (count + val < 1) return
         updateLocalStorageData(item.id, { quantity: count + val })
         setCount(prev => prev + val)
+    }
+
+    const removeItem = (id) => {
+        const updatedCart = data?.filter((elem) => elem.id !== id)
+        setCartData(updatedCart)
     }
 
 
@@ -34,7 +39,7 @@ const SidebarItemcard = ({ item, updateLocalStorageData }) => {
                         <span style={{ cursor: "default" }}>{count}</span>
                         <span onClick={() => handleClick(-1)}>-</span>
                     </p>
-                    <p className='drawer-remove-btn' >Remove</p>
+                    <p className='drawer-remove-btn' onClick={() => removeItem(item.id)} >Remove</p>
                 </div>
             </div>
         </div>
