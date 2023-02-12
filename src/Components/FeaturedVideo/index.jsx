@@ -40,9 +40,7 @@ const VideoCont = () => {
                 <div className="image-wrapper" >
                     {
                         ImageData.map((item, i) => (
-                            <>
-                                <img src={item.img} alt="" className='featured-images' key={i} />
-                            </>
+                            <img src={item.img} alt="" className='featured-images' key={i} />
                         ))
                     }
                 </div>

@@ -97,5 +97,7 @@
   width: fit-content;
   align-self: end;
   border-radius: 5px;
+  outline: none;
+  border: none;
   margin: 3rem 0rem 2rem 0rem;
 }

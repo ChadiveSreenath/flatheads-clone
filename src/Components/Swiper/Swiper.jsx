@@ -38,8 +38,8 @@ const Swiper = () => {
             </div>
             <div className="swiper-section">
                 {
-                    SwiperData.map((item) => (
-                        <div className='swiper-slider'>
+                    SwiperData.map((item,i) => (
+                        <div className='swiper-slider'  key={i}>
                             <div className='swiper-image' >
                                 <img src={item.img} alt="" height="560vh" width="550vw" />
                             </div>

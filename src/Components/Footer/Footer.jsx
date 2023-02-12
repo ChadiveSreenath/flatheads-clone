@@ -8,8 +8,13 @@ import {
   AiFillMail,
 } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+
+
+
+
   return (
     <>
       <div className="footer">
@@ -43,16 +48,36 @@ const Footer = () => {
           <div>
             <p className='p-tag'>FOOTER SHOP</p>
             <div className='footer-shop-items'>
-              <span>Men</span>
-              <span>Banana Kicks</span>
-              <span>SoftKnit Loafers</span>
-              <span>Linen Sneakers</span>
-              <span>KoolTex Trainers</span>
-              <span> New Troos Bamboo Loafers</span>
-              <span>Ellipsis Breathable Sneakers</span>
-              <span>Luft Ultralight Sneakers</span>
-              <span>Bestsellers</span>
-              <span>Shop All</span>
+              <Link to="/collections" >
+                <span>Men</span>
+              </Link>
+              <Link to="/shoes" >
+                <span>Banana Kicks</span>
+              </Link>
+              <Link to="/shoes" >
+                <span>SoftKnit Loafers</span>
+              </Link>
+              <Link to="/shoes" >
+                <span>Linen Sneakers</span>
+              </Link>
+              <Link to="/shoes" >
+                <span>KoolTex Trainers</span>
+              </Link>
+              <Link to="/shoes" >
+                <span> New Troos Bamboo Loafers</span>
+              </Link>
+              <Link to="/shoes" >
+                <span>Ellipsis Breathable Sneakers</span>
+              </Link>
+              <Link to="/shoes" >
+                <span>Luft Ultralight Sneakers</span>
+              </Link>
+              <Link to="/limitededition" >
+                <span>Bestsellers</span>
+              </Link>
+              <Link to="/products" >
+                <span>Shop All</span>
+              </Link>
             </div>
           </div>
           <div>

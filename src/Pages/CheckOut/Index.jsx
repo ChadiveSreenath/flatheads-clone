@@ -35,12 +35,12 @@ const CheckOut = () => {
   // console.log(data.original_price, data.quantity)
 
 
-  const cartSubtotal = data.map((item, i) => {
+  const cartSubtotal = data?.map((item, i) => {
     const subtotal = +item.original_price.split(",").join("")
     return subtotal * item.quantity
   })
 
-  const cartAmount = cartSubtotal.reduce((acc, curr) => {
+  const cartAmount = cartSubtotal?.reduce((acc, curr) => {
     return acc + curr
   }, 0)
 
@@ -112,12 +112,12 @@ const CheckOut = () => {
             data?.map((item, i) => (
               <div className='cart-item-wrapper' key={i}>
                 <div>
-                  <img src={item.images[0]} alt="" style={{ objectFit: 'contain', width: '20%', marginRight: "10px" }} />
-                  <p style={{ fontSize: "0.85rem", }}>{item.name}&nbsp;</p>
-                  <p style={{ fontSize: "0.85rem", }}> | {item.gender}</p>
+                  <img src={item.img} alt="" style={{ objectFit: 'contain', width: '20%', marginRight: "10px" }} />
+                  <p style={{ fontSize: "0.85rem", }}>{item?.name}&nbsp;</p>
+                  <p style={{ fontSize: "0.85rem", }}> | {item?.gender}</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: "1.25rem", marginBottom: "1.2rem", fontWeight: "600" }}>{`₹${item.original_price}`}</p>
+                  <p style={{ fontSize: "1.25rem", marginBottom: "1.2rem", fontWeight: "600" }}>{`₹${item?.original_price}`}</p>
                 </div>
               </div>
             ))
@@ -130,7 +130,7 @@ const CheckOut = () => {
         <div className="subtotal">
           <div>
             <p style={{ fontSize: "1.25rem", color: "#404040" }}>Subtotal</p>
-            <p style={{ fontSize: "1.25rem", fontWeight: "700" }}>{`₹ ${cartAmount}`}</p>
+            <p style={{ fontSize: "1.25rem", fontWeight: "700" }}>{`₹ ${cartAmount || 0}`}</p>
           </div>
           <div>
             <p style={{ fontSize: "1.25rem", color: "#404040" }}>Shipping</p>
@@ -139,7 +139,7 @@ const CheckOut = () => {
         </div>
         <div className="cart-total">
           <p style={{ fontSize: "1.25rem", color: "#404040" }}>Total</p>
-          <p style={{ fontSize: "1.5rem", fontWeight: "700" }}>{`Rs.${cartAmount}`}</p>
+          <p style={{ fontSize: "1.5rem", fontWeight: "700" }}>{`Rs.${cartAmount || 0}`}</p>
         </div>
       </div>
     </div>

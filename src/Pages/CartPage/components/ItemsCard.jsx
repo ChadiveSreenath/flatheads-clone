@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const ItemsCard = ({ item, index: i, updateLocalStorageData }) => {
+const ItemsCard = ({ item, index: i, updateLocalStorageData, data }) => {
 
     const [count, setCount] = useState(item.quantity || 1)
 
@@ -10,18 +10,28 @@ const ItemsCard = ({ item, index: i, updateLocalStorageData }) => {
         setCount(prev => prev + val)
     }
 
-    
+
+    const removeItem = (item) => {
+        data.filter((product) => {
+            if (item.id === product.id) {
+                console.log(data)
+                return data?.remove(product)
+            }
+
+        })
+    }
+
     return (
         <div className='item-summary-cont' key={i}>
             <div>
-                <img src={item.images[0]} alt="" style={{ objectFit: 'contain', width: '35%', marginRight: "10px" }} />
+                <img src={item?.img} alt="" style={{ objectFit: 'contain', width: '35%', marginRight: "10px" }} />
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", marginTop: "1.5rem" }}>
                     <div>
                         <p className='item-name-wrapper'>{item.name}&nbsp;</p>
                         <p className='item-name-wrapper'> | {item.gender}</p>
                     </div>
                     <div>
-                        <p className='remove-btn'>Remove</p>
+                        <p className='remove-btn' onClick={() => removeItem(item, i)}>Remove</p>
                     </div>
                 </div>
             </div>

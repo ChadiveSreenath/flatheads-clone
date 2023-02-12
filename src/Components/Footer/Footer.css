@@ -52,11 +52,14 @@
   grid-gap: 1rem;
   margin-top: 1rem;
 }
+.footer-shop-items a{
+  color: #404040;
+  text-decoration: none;
+}
 .footer-about-items span:hover  {
   cursor: pointer;
   text-decoration: underline;
 }
-
 .p-tag {
   margin-top: 3rem;
   font-size: 0.9rem;

@@ -13,6 +13,7 @@ import ShoeCard from '../ProductList/pages/Shoes'
 import Signup from '../Signup/Index'
 import Collections from "../ProductList/pages/Collections"
 import LimitedEdition from '../ProductList/pages/LimitedEdition'
+import Logout from '../Logout'
 
 
 const NavigationRoutes = () => {
@@ -28,6 +29,7 @@ const NavigationRoutes = () => {
                     <Route path='/products' element={<ProductList />} />
                     <Route path='/products/:productId' element={<ProductDetail />} />
                     <Route path='/signup' element={<Signup />} />
+                    <Route path='/logout' element={<Logout />} />
                     <Route path='/cart' element={<CartPage />} />
                     <Route path='/shoes' element={<ShoeCard />} />
                     <Route path='/collections' element={<Collections />} />

@@ -12,6 +12,9 @@ import PersonIcon from '../../Assets/Icons/PersonIcon';
 import Logo from "../../Assets/flatheads-logo.webp"
 import { Link, useNavigate } from 'react-router-dom';
 import './Topbar.css'
+import SidebarItemcard from './Components/SidebarItemcard';
+import CloseIcon from '@mui/icons-material/Close';
+import { CartDataContext } from '../../Store/DataContext';
 
 const pages = ['Shop', 'Limited Edition(New)', 'Shoes', "Classics", "About", "Help"];
 
@@ -24,22 +27,54 @@ function ResponsiveAppBar() {
     const history = useNavigate();
 
     const handleNavigate = (page) => {
-        if(page==="Shoes"){
+        if (page === "Shoes") {
             history("/shoes")
-        }   
-        else if(page==="Shop"){
-            history("/products")
+            window.location.reload(false)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
         }
-        else if(page==="Classics"){
+        else if (page === "Shop") {
+            history("/products")
+            window.location.reload(false)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
+        }
+        else if (page === "Classics") {
             history("/Collections")
             window.location.reload(false)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
         }
-        else if(page==="Limited Edition(New)"){
+        else if (page === "Limited Edition(New)") {
             history("/LimitedEdition")
             window.location.reload(false)
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            })
         }
-        
+
     }
+
+    const { cartData: data, setCartData } = React.useContext(CartDataContext)
+
+    const updateLocalStorageData = (id, value) => {
+        const updatedData = data?.map(item => item.id === id ? { ...item, ...value } : item)
+        window.localStorage.setItem('cart', JSON.stringify(updatedData))
+        setCartData(updatedData)
+    }
+
+    const ItemsSubtotalArray = () => data?.map(item => {
+        const price = + item.original_price.split(',').join('')
+        return price * (item?.quantity || 1)
+    })
+
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: "white", color: "black", height: '3.75rem', px: { md: "3rem" } }}>
@@ -92,8 +127,60 @@ function ResponsiveAppBar() {
                             <BasketIcon />
                         </div>
                     </Box>
-                    <SwipeableTemporaryDrawer toggleDrawer={() => toggleDrawer()} open={openDrawer} />
-                    <SwipeableTemporaryDrawer toggleDrawer={() => toggleCart()} open={openCart} anchor='right' />
+                    <SwipeableTemporaryDrawer toggleDrawer={() => toggleDrawer()} open={openDrawer}>
+                        <div className="mobile-menu-container">
+                            <div className="login-btn">
+                                <label>
+                                    <PersonIcon />
+                                    <p>Login</p>
+                                </label>
+                                <IconButton onClick={() => toggleDrawer()} >
+                                    <CloseIcon />
+                                </IconButton>
+                            </div>
+                            <div className="mobile-menu">
+                                {
+                                    pages.map((item, i) => (
+                                        <div className='menu-item' key={i} style={{ cursor: "pointer" }} >
+                                            <p onClick={() => handleNavigate(item)}>{item}</p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </SwipeableTemporaryDrawer>
+                    <SwipeableTemporaryDrawer toggleDrawer={() => toggleCart()} open={openCart} anchor='right' >
+
+                        <div className="cart-drawer-header">
+                            <p>Cart</p>
+                            <IconButton onClick={() => toggleCart()}>
+                                <CloseIcon />
+                            </IconButton>
+                        </div>
+                        <div className="cart-drawer-summary">
+                            {
+                                data?.map((item, i) => (
+                                    <SidebarItemcard item={item} key={i} updateLocalStorageData={updateLocalStorageData} />
+                                ))
+                            }
+                        </div>
+                        <div className="drawer-subtotal-container">
+                            <p className='subtotal-text'>Subtotal</p>
+                            <p className='full-total-text'>
+                                {`Rs. ${ItemsSubtotalArray()?.reduce((def, curr) => def + curr, 0) || 0}`}
+                            </p>
+                            <p>Tax included. Shipping calculated at checkout.</p>
+                            <p>Orders will be processed in INR.</p>
+                            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                                <Link to="/checkout" style={{ textDecoration: "none" }}>
+                                    <Button variant="contained" sx={{ color: "white", fontSize: "12px", padding: " .75rem 2.2rem", backgroundColor: "black", width: "90%", "&:hover": { backgroundColor: "white", color: "black" } }}>CheckOut</Button>
+                                </Link>
+                                <Link to="/cart" style={{ textDecoration: "none" }}>
+                                    <Button variant="contained" sx={{ color: "white", fontSize: "12px", padding: " .75rem 2.2rem", backgroundColor: "black", width: "90%", "&:hover": { backgroundColor: "white", color: "black" } }}>View Cart</Button>
+                                </Link>
+                            </div>
+                        </div>
+                    </SwipeableTemporaryDrawer>
                 </Toolbar>
             </Container>
         </AppBar>

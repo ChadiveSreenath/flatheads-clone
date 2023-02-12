@@ -19,3 +19,6 @@ body {
 .main-content {
   margin-top: 3.75rem;
 }
+*{
+  scroll-behavior: smooth;
+}

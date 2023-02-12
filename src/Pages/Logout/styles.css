@@ -1,0 +1,18 @@
+.logout-wrapper{
+    padding: 3rem;
+}
+
+.logout-text{
+    text-align: end;
+    font-size: 1.25rem;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #303030;
+    padding: 0 3rem;
+}
+
+.email-text{
+    display: flex;
+    font-size: 1.25rem;
+    gap: 20px;
+}

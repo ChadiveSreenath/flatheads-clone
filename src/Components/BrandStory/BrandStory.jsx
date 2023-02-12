@@ -29,15 +29,15 @@ const BrandStory = () => {
                     </div>
                     <div className='brand-icon-images'>
                         {
-                            bgImages.map((item) => (
-                                <div className="icon-cont">
+                            bgImages.map((item,i) => (
+                                <div className="icon-cont"  key={i}>
                                     <img src={item.img} alt="" height="50px" width="50px" />
                                     <span style={{ color: "#404040" }}>{item.name}</span>
                                 </div>
                             ))
                         }
                         <div>
-                            <button>Learn More</button>
+                            <button style={{border:"none",outline:"none"}}>Learn More</button>
                         </div>
                     </div>
                 </div>

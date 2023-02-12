@@ -1,26 +1,43 @@
-import React from 'react'
+import { CircularProgress } from '@mui/material'
+import { Box } from '@mui/system'
+import React, { useEffect, useState } from 'react'
 import ProData from "../../../data.json"
 import ProductCard from '../Components/ProductCard'
 
 const LimitedEdition = () => {
 
-    return (
-        <div className='product-details-container'>
+  const [progress, showProgress] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      showProgress(false)
+    }, 2000)
+  }, [])
+
+  return (
+    <div className='product-details-container'>
       <div className="product-heading">
         <p>Classics</p>
       </div>
       <div className="products-container">
         <div className="product-card">
           {
-            (ProData.mensdata.reverse()).map((item, i) => (
-              <ProductCard item={item} key={i} />
-            ))
+            progress ?
+              <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                <Box >
+                  <CircularProgress size={180} />
+                </Box>
+              </div>
+              :
+              (ProData?.mensdata?.reverse()).map((item, i) => (
+                <ProductCard item={item} key={i} />
+              ))
           }
+
         </div>
       </div>
-
     </div>
-    )
+  )
 }
 
 export default LimitedEdition

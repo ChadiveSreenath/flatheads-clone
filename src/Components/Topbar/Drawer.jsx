@@ -2,8 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 
-
-export default function SwipeableTemporaryDrawer({ toggleDrawer, open, anchor = 'left' }) {
+export default function SwipeableTemporaryDrawer({ toggleDrawer, open, anchor = 'left', children }) {
 
     return (
         <div>
@@ -14,14 +13,17 @@ export default function SwipeableTemporaryDrawer({ toggleDrawer, open, anchor = 
                 onOpen={toggleDrawer}
             >
                 <Box
-                    sx={{ width: 250 }}
+                    sx={{ width: "35vw" }}
                     role="presentation"
-                    onClick={toggleDrawer}
+
                 >
-                    Hello
+                    {children}
+
                 </Box>
 
             </SwipeableDrawer>
         </div>
     );
 }
+
+

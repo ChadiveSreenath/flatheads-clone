@@ -6,19 +6,18 @@ import ItemsCard from './components/ItemsCard'
 import "./styles.css"
 
 const CartPage = () => {
-  const { cartData: data, setCartdata: setData } = useContext(CartDataContext)
+  const { cartData: data, setCartData} = useContext(CartDataContext)
 
   const updateLocalStorageData = (id, value) => {
-    const updatedData = data.map(item => item.id === id ? { ...item, ...value } : item)
+    const updatedData = data?.map(item => item.id === id ? { ...item, ...value } : item)
     window.localStorage.setItem('cart', JSON.stringify(updatedData))
-    setData(updatedData)
+    setCartData(updatedData)
   }
 
-  const ItemsSubtotalArray = () => data.map(item => {
+  const ItemsSubtotalArray = () => data?.map(item => {
     const price = + item.original_price.split(',').join('')
     return price * (item?.quantity || 1)
   })
-  console.log(ItemsSubtotalArray())
 
   return (
     <div className="cart-section">
@@ -43,7 +42,7 @@ const CartPage = () => {
           <div className="info-cart-wrapper">
             {
               data?.map((item, i) => (
-                <ItemsCard item={item} key={i} index={i} updateLocalStorageData={updateLocalStorageData} />
+                <ItemsCard item={item} key={i} index={i} updateLocalStorageData={updateLocalStorageData} data={data} />
               ))
             }
           </div>
@@ -52,7 +51,7 @@ const CartPage = () => {
       <div className="subtotal-container">
         <p className='subtotal-text'>Subtotal</p>
         <p className='full-total-text'>
-          {ItemsSubtotalArray().reduce((def, curr) => def + curr, 0)}
+          {ItemsSubtotalArray()?.reduce((def, curr) => def + curr, 0)|| 0}
         </p>
         <p>Tax included. Shipping calculated at checkout.</p>
         <p>Orders will be processed in INR.</p>
