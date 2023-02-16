@@ -1,5 +1,5 @@
 import { Button } from '@mui/material'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import "./styles.css"
 import { userLogin } from "../../Store/DataContext"
@@ -9,11 +9,9 @@ const Login = () => {
   const emailRef = useRef()
   const passwordRef = useRef()
   const navigate = useNavigate()
-  const [loading, setLoading] = useState(false)
 
 
   const handleLogin = () => {
-    setLoading(true)
     userLogin(emailRef.current.value, passwordRef.current.value)
       .then(() => {
         navigate("/")
@@ -21,7 +19,6 @@ const Login = () => {
       .catch((error) => {
         alert("Please login with correct credentials")
       })
-    setLoading(false)
   }
 
 

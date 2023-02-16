@@ -27,3 +27,15 @@ export const removeItemFromCart = async (id, cartData, itemRef) => {
     }
 
 }
+
+
+export const emptyCart = async (itemRef) => {
+    try {
+        await updateDoc(itemRef, {
+            cartProducts: []
+        })
+    } catch (error) {
+        console.log({ error })
+    }
+
+}

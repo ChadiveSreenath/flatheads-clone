@@ -5,15 +5,12 @@ import { doc, onSnapshot, setDoc } from 'firebase/firestore'
 
 export const CartDataContext = createContext()
 
-
-// const cartItems = JSON.parse(window.localStorage.getItem("cart"))
-
 export const UserSignUp = (email, password) => {
     const userCreate = createUserWithEmailAndPassword(auth, email, password)
-    const firebaseData = setDoc(doc(db, "users", email), {
+    setDoc(doc(db, "users", email), {
         cartProducts: []
     })
-    return userCreate, firebaseData
+    return userCreate
 }
 
 export const UserAuth = () => {

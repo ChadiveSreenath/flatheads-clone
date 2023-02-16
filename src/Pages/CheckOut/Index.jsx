@@ -3,9 +3,12 @@ import "./styles.css"
 import Logo from "../../Assets/flatheads-logo.webp"
 import { Button, TextField } from '@mui/material'
 import styled from 'styled-components';
-import { CartDataContext } from '../../Store/DataContext';
+import { CartDataContext, UserAuth } from '../../Store/DataContext';
 import { Link } from 'react-router-dom';
 import BasicModal from './Components/Modal';
+import { emptyCart } from '../../utils/helpers';
+import { db } from '../../Firebase';
+import { doc } from '@firebase/firestore';
 
 
 
@@ -36,7 +39,9 @@ const CheckOut = () => {
     setOpen(false)
     window.location.href = '/'
   }
+  const currentUser = UserAuth()
   const { cartData: data, subTotalPrice } = useContext(CartDataContext)
+  const itemRef = doc(db, "users", `${currentUser?.email}`)
 
   const CountryRef = useRef()
   const NameRef = useRef()
@@ -48,7 +53,12 @@ const CheckOut = () => {
 
   const handleCheckout = (event) => {
     event.preventDefault()
+    if (!data.length) {
+      alert('Your cart is empty, please add items to cart')
+      return window.location.href = '/products'
+    }
     setOpen(true)
+    emptyCart(itemRef)
   }
 
   return (
