@@ -7,7 +7,6 @@ const useFetch = (url) => {
         setLoading(true)
         fetch(url).then(data => data.json()).then(products => {
             setData(products)
-            console.log(products)
         }).finally(() => setLoading(false))
     }, [url])
     return { data, loading }

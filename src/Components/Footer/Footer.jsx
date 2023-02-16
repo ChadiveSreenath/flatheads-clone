@@ -48,10 +48,10 @@ const Footer = () => {
           <div>
             <p className='p-tag'>FOOTER SHOP</p>
             <div className='footer-shop-items'>
-              <Link to="/collections" >
+              <Link to="/collections"  >
                 <span>Men</span>
               </Link>
-              <Link to="/shoes" >
+              <Link to="/shoes"  >
                 <span>Banana Kicks</span>
               </Link>
               <Link to="/shoes" >

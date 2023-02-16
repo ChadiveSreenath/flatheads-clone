@@ -4,9 +4,7 @@ import ProductCard from './Components/ProductCard'
 import "./styles.css"
 
 const ProductList = () => {
-
-  // console.log(ProData)
-
+  
   return (
     <div className='product-details-container'>
       <div className="product-heading">
@@ -14,9 +12,6 @@ const ProductList = () => {
       </div>
       <div className="products-container">
         <div className="product-card">
-
-
-
           {
             (ProData.products).map((item, i) => (
               <ProductCard item={item} key={i} />

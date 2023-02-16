@@ -5,6 +5,7 @@
       "name": "BANANA KICKS",
       "color": "ALL-BLACK",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -22,6 +23,7 @@
       "name": "BANANA KICKS",
       "color": "ALL-BLACK",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -39,6 +41,7 @@
       "name": "BANANA KICKS",
       "color": "AQUA BLUE",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -57,6 +60,7 @@
       "name": "BANANA KICKS",
       "color": "BURGUNDY RED",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -75,6 +79,7 @@
       "name": "BANANA KICKS",
       "color": "NATURAL WHITE",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -92,6 +97,7 @@
       "name": "BANANA KICKS",
       "color": "NATURAL WHITE",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -108,6 +114,7 @@
       "name": "BANANA KICKS",
       "color": "BURGUNDY RED",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -126,6 +133,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "ALL-BLACK",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -143,6 +151,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "ALL-BLACK",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -160,6 +169,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "BLACK & GREY (BLACK SOLE)",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "4,999",
       "final_price": "3,999",
       "img": [
@@ -177,6 +187,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "BLACK & GREY (BLACK SOLE)",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -194,6 +205,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "BLACK & RED (BLACK SOLE)",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -211,6 +223,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "BLACK & RED (BLACK SOLE)",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -228,6 +241,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "WHITE & NAVY",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -245,6 +259,7 @@
       "name": "SOFTKNIT LOAFERS",
       "color": "WHITE & NAVY",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "3,499",
       "final_price": "2,649",
       "img": [
@@ -262,6 +277,7 @@
       "name": "LINEN SNEAKERS",
       "color": "BURGUNDY-RED",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,799",
       "final_price": "3,499",
       "img": [
@@ -279,6 +295,7 @@
       "name": "LINEN SNEAKERS",
       "color": "LAVENDER",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,799",
       "final_price": "3,499",
       "img": [
@@ -296,6 +313,7 @@
       "name": "LINEN SNEAKERS",
       "color": "BURGUNDY-RED",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "4,799",
       "final_price": "3,499",
       "img": [
@@ -313,6 +331,7 @@
       "name": "LINEN SNEAKERS",
       "color": "OLIVE-BLACK (BLACK SOLE)",
       "gender": "MEN",
+      "qty": 1,
       "original_price": "4,799",
       "final_price": "3,499",
       "img": [
@@ -329,6 +348,7 @@
       "name": "LINEN SNEAKERS",
       "color": "OLIVE-BLACK (BLACK SOLE)",
       "gender": "WOMEN",
+      "qty": 1,
       "original_price": "4,799",
       "final_price": "3,499",
       "img": [
@@ -343,145 +363,161 @@
   ],
   "mensdata": [
     {
-      "id": 1,
+      "id": 100,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/Flatheads-SurvivorTee-Men-Product_288x352.jpg?v=1673350669",
       "saleprice": "4125",
-      "original_price": "5500",
+      "qty": 1,
+      "original_price": "5,500",
       "name": "The Survivor Tee",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 2,
+      "id": 200,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/Flatheads-SurvivorTee-Women-Model-Back_288x352.jpg?v=1673358303",
       "saleprice": "6950",
-      "original_price": "7500",
+      "qty": 1,
+      "original_price": "7,500",
       "name": "The Survivor Tee",
       "gender": "WOMEN",
       "size": "Large"
     },
     {
-      "id": 3,
+      "id": 300,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/Flatheads-SurvivorTee-Men-White-Model-Back_jpg_288x352.jpg?v=1673665138",
       "saleprice": "4875",
-      "original_price": "5700",
+      "qty": 1,
+      "original_price": "5,700",
       "name": " The Survivor Tee | White",
       "gender": "WOMEN",
       "size": "Large"
     },
     {
-      "id": 4,
+      "id": 400,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/Flatheads-SurvivorTee-Women-White-Model-Back_288x352.jpg?v=1673665493",
       "saleprice": "6425",
-      "original_price": "7500",
+      "qty": 1,
+      "original_price": "7,500",
       "name": "The Survivor Tee | White",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 5,
+      "id": 500,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/1_83d469ba-d9d5-4eac-9ec0-ef1d5c8c8174_288x352.jpg?v=1674788411",
       "saleprice": "3125",
-      "original_price": "3900",
+      "qty": 1,
+      "original_price": "3,900",
       "name": " Vistrit Extended Mandarin Collar Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 6,
+      "id": 600,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/2_e4e6bc96-2b4e-429d-ae53-702643bd62ed_288x352.jpg?v=1674788080",
       "saleprice": "2500",
-      "original_price": "3800",
+      "qty": 1,
+      "original_price": "3,800",
       "name": "Ethno Mandarin Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 7,
+      "id": 700,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/4_e78efad4-dcee-41e9-95fb-6cdd5a2f6c8c_288x352.jpg?v=1674788549",
       "saleprice": "7075",
-      "original_price": "7800",
+      "qty": 1,
+      "original_price": "7,800",
       "name": "V-Neck Mandarin Collar Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 8,
+      "id": 800,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/1_24c7acb0-ce1b-43a7-9355-7b536a9ed037_704x928.jpg?v=1674788080",
       "saleprice": "6505",
-      "original_price": "7020",
+      "qty": 1,
+      "original_price": "7,020",
       "name": "Classic Full Sleeve Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 9,
+      "id": 900,
       "img": "https://cdn11.bigcommerce.com/s-gemc6adefl/images/stencil/320w/products/1908/20951/DSCF0516__99326.1638093033.jpg?c=1",
       "saleprice": "6200",
-      "original_price": "6500",
+      "qty": 1,
+      "original_price": "6,500",
       "name": " Spread-Collar Dress Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 10,
+      "id": 1000,
       "img": "https://cdn11.bigcommerce.com/s-gemc6adefl/images/stencil/320w/products/2352/26030/DSCF5876-2__13105.1666198980.jpg?c=1",
       "saleprice": "3333",
-      "original_price": "4500",
+      "qty": 1,
+      "original_price": "4,500",
       "name": "Spread-Collar Dress Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 11,
+      "id": 1001,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/2_4cf2e257-ca36-4094-829b-07132841f9b3_256x320.jpg?v=1674788997",
       "saleprice": "2150",
-      "original_price": "2580",
+      "qty": 1,
+      "original_price": "2,580",
       "name": " Mandarin Collar Shirt",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 12,
+      "id": 1002,
       "img": "https://cdn.shopify.com/s/files/1/0258/2485/4100/products/2_9b78e426-2761-4869-b6ca-b9cd6c786bb1_256x320.jpg?v=1674788741",
       "saleprice": "4450",
-      "original_price": "5500",
+      "qty": 1,
+      "original_price": "5,500",
       "name": "Classic Half Sleeve Shirt ",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 13,
+      "id": 1003,
       "img": "https://cdn11.bigcommerce.com/s-gemc6adefl/images/stencil/320w/products/2351/27186/DSC02564-2__93337.1671560022.jpg?c=1",
       "saleprice": "4450",
-      "original_price": "3500",
+      "qty": 1,
+      "original_price": "3,500",
       "name": "The Flat Head Native Check Western Shirt - Sax Blue ",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 14,
+      "id": 1004,
       "img": "https://cdn11.bigcommerce.com/s-gemc6adefl/images/stencil/320w/products/2354/26466/DSC00927__46568.1668187698.jpg?c=1",
       "saleprice": "4450",
-      "original_price": "2950",
+      "qty": 1,
+      "original_price": "2,950",
       "name": "The Flat Head Horsehide Grizzly Jacket - Black ",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 15,
+      "id": 1005,
       "img": "https://cdn11.bigcommerce.com/s-gemc6adefl/images/stencil/320w/products/370/23169/DSCF0679-2__33028.1651768930.jpg?c=1",
       "saleprice": "4450",
-      "original_price": "1900",
+      "qty": 1,
+      "original_price": "1,900",
       "name": "The Flat Head Plain Heavyweight T Shirt - Black ",
       "gender": "MEN",
       "size": "Large"
     },
     {
-      "id": 16,
+      "id": 1006,
       "img": "https://cdn11.bigcommerce.com/s-gemc6adefl/images/stencil/320w/products/1906/26036/DSCF5887-2__71814.1666199009.jpg?c=1",
       "saleprice": "4450",
-      "original_price": "4200",
+      "qty": 1,
+      "original_price": "4,200",
       "name": "The Flat Head Block Check Work Shirt Flannel - Navy/Green ",
       "gender": "MEN",
       "size": "Large"

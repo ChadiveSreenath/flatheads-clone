@@ -31,11 +31,13 @@
   margin-top: 10px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+
 }
 .item-summary-cont {
   display: flex;
   padding: 0 0.5rem;
   margin-top: 1rem;
+  margin-bottom: 10px;
 }
 .item-summary-cont div {
   flex: 1;

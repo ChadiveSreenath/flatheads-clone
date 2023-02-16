@@ -1,19 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ item, i }) => {
 
-    const handleClick = (item) => {
-        window.localStorage.setItem("proCard", JSON.stringify(item))
-    }
-
+    const navigate = useNavigate()
     return (
-        <div style={{ flex: "1" }} key={i}>
-            <Link to={`/products/${item.id}`}>
-                <img src={item?.img} alt="" width="231px" height="285px" style={{ cursor: "pointer" }} onClick={() => handleClick(item)} />
-            </Link>
-            <p style={{ fontSize: "1rem", padding: "0 1.25em" }}>{`${item.name} `}</p>
-            <p style={{ color: "#404040" }}>{`Rs ${item.original_price}`}</p>
+        <div style={{ flex: "1" }} key={i} onClick={() => {
+            navigate(`/products/${item.id}`)
+            window.scroll(0, 0)
+        }}>
+            <img src={item?.img} alt="" width="231px" height="285px" style={{ cursor: "pointer" }} />
+            <p style={{ fontSize: "1rem", padding: "0 1.25em", cursor: "pointer" }}>{`${item.name} `}</p>
+            <p style={{ color: "#404040", cursor: "pointer" }}>{`Rs ${item.original_price}`}</p>
         </div>
     )
 }

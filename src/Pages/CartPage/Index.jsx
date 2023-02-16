@@ -1,25 +1,14 @@
 import { Button } from '@mui/material'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { CartDataContext } from '../../Store/DataContext'
+import  { CartDataContext } from '../../Store/DataContext'
 import ItemsCard from './components/ItemsCard'
 import "./styles.css"
 
+
 const CartPage = () => {
-  const { cartData: data, setCartData} = useContext(CartDataContext)
 
-  const updateLocalStorageData = (id, value) => {
-    const updatedData = data?.map(item => item.id === id ? { ...item, ...value } : item)
-    window.localStorage.setItem('cart', JSON.stringify(updatedData))
-    setCartData(updatedData)
-  }
-
-  const ItemsSubtotalArray = () => data?.map(item => {
-    const price = + item.original_price.split(',').join('')
-    return price * (item?.quantity || 1)
-  })
-
-  
+  const { cartData, ItemsSubtotalArray } = useContext(CartDataContext)
 
   return (
     <div className="cart-section">
@@ -43,8 +32,8 @@ const CartPage = () => {
         <div className="cart-info">
           <div className="info-cart-wrapper">
             {
-              data?.map((item, i) => (
-                <ItemsCard item={item} key={i} index={i} setCartData={setCartData} updateLocalStorageData={updateLocalStorageData} data={data} />
+              cartData?.map((item, i) => (
+                <ItemsCard item={item?.product} key={i} index={i} />
               ))
             }
           </div>
@@ -53,7 +42,7 @@ const CartPage = () => {
       <div className="subtotal-container">
         <p className='subtotal-text'>Subtotal</p>
         <p className='full-total-text'>
-          {ItemsSubtotalArray()?.reduce((def, curr) => def + curr, 0)|| 0}
+          {ItemsSubtotalArray()?.reduce((def, curr) => def + curr, 0) || 0}
         </p>
         <p>Tax included. Shipping calculated at checkout.</p>
         <p>Orders will be processed in INR.</p>

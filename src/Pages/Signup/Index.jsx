@@ -1,6 +1,6 @@
 import { Button } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
-import { UserSignUp } from "../../Firebase"
+import { UserSignUp } from "../../Store/DataContext"
 import React, { useRef, useState } from 'react'
 
 const Signup = () => {
@@ -17,13 +17,13 @@ const Signup = () => {
 
   const HandleSignUp = () => {
     setLoading(true)
-    if (!emailRef.current.value  || !passwordRef.current.value  || !firstnameRef.current.value  || !lastnameRef.current.value ) {
+    if (!emailRef.current.value || !passwordRef.current.value || !firstnameRef.current.value || !lastnameRef.current.value) {
       alert("Please Fill All Input Fields")
     }
     else {
       UserSignUp(emailRef.current.value, passwordRef.current.value)
         .then(() => {
-          navigate("/login")
+          navigate("/logout")
         })
         .catch((err) => {
           alert("Email is already in Use")

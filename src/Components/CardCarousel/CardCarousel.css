@@ -7,34 +7,40 @@
 }
 .card-carousel {
   display: flex;
-  flex-direction: column;  
-  height: 370px; 
+  flex-direction: column;
+  height: 370px;
   width: 25%;
 }
-.card-carousel img{
-    width: 231px;
-    height: 285px;
+.card-carousel img {
+  width: 231px;
+  height: 285px;
 }
-.card-item-name{
-    font-size: 14px;
-    padding: 10px;
-    text-align: center;
-    color: #404040;
+.card-item-name {
+  font-size: 14px;
+  padding: 10px;
+  text-align: center;
+  color: #404040;
 }
-.card-item-price{
-    color: #c94200;
-    text-align: center;
+.card-item-price {
+  color: #c94200;
+  text-align: center;
 }
-.survivor-tee{
-    text-align: center;
-    margin-top: 2rem;
+.survivor-tee {
+  text-align: center;
+  margin-top: 2rem;
 }
-.survivor-tee span{
-    font-size: 2rem;
-    color: #303030;
-    display: inline-block;
-    margin-top: 16px;
+.survivor-tee span {
+  font-size: 2rem;
+  color: #303030;
+  display: inline-block;
+  margin-top: 16px;
 }
-.survivor-tee p{
-    color: #404040;
+.survivor-tee p {
+  color: #404040;
 }
+
+/* @media screen and (max-width: 768px) {
+    .slider-items{
+        min-width: 80vw;
+    }
+} */

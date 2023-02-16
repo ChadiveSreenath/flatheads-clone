@@ -19,6 +19,23 @@ body {
 .main-content {
   margin-top: 3.75rem;
 }
-*{
+* {
   scroll-behavior: smooth;
+}
+
+button:not(.bs-none) {
+  box-shadow: 0 4px 16px 1px rgb(0 0 0 / 25%);
+}
+
+.flex {
+  display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
+}
+.flex-col {
+  flex-direction: column;
 }

@@ -1,10 +1,11 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "./styles.css"
 import Logo from "../../Assets/flatheads-logo.webp"
 import { Button, TextField } from '@mui/material'
 import styled from 'styled-components';
 import { CartDataContext } from '../../Store/DataContext';
 import { Link } from 'react-router-dom';
+import BasicModal from './Components/Modal';
 
 
 
@@ -30,20 +31,12 @@ const CssTextField = styled(TextField)({
 
 const CheckOut = () => {
 
-
-  const { cartData: data, setCartData } = useContext(CartDataContext)
-
-  // console.log(data.original_price, data.quantity)
-
-
-  const cartSubtotal = data?.map((item, i) => {
-    const subtotal = +item.original_price.split(",").join("")
-    return subtotal * item.quantity
-  })
-
-  const cartAmount = cartSubtotal?.reduce((acc, curr) => {
-    return acc + curr
-  }, 0)
+  const [open, setOpen] = useState(false)
+  const onClose = () => {
+    setOpen(false)
+    window.location.href = '/'
+  }
+  const { cartData: data, subTotalPrice } = useContext(CartDataContext)
 
   const CountryRef = useRef()
   const NameRef = useRef()
@@ -53,8 +46,9 @@ const CheckOut = () => {
   const MobileRef = useRef()
 
 
-  const handleCheckout = () => {
-    alert("Order Placed , Check Email or Phone for Order details")
+  const handleCheckout = (event) => {
+    event.preventDefault()
+    setOpen(true)
   }
 
   return (
@@ -65,59 +59,61 @@ const CheckOut = () => {
             <img src={Logo} alt="" />
           </Link>
         </div>
-        <div className="contact-information" >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "34.5vw" }}>
-            <p className='heading-info'>Contact Information</p>
-            <p style={{ fontSize: "0.75rem" }} > Already have an account?
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                Log in
-              </Link>
-            </p>
+        <form action="" onSubmit={handleCheckout}>
+          <div className="contact-information" >
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", width: "34.5vw" }}>
+              <p className='heading-info'>Contact Information</p>
+              {/* <p style={{ fontSize: "0.75rem" }} > Already have an account?
+                <Link to="/login" style={{ textDecoration: "none" }}>
+                  Log in
+                </Link>
+              </p> */}
+            </div>
+            <div>
+              <CssTextField label="Email" required />
+            </div>
+            <div>
+              <span style={{ fontSize: "0.85rem", display: "flex", margin: "0" }}>
+                <input type="checkbox" />
+                <p>Email me with news and offers</p>
+              </span>
+            </div>
           </div>
-          <div>
-            <CssTextField label="Email" />
-          </div>
-          <div>
+          <div className="shipping-address">
+            <p className='heading-info'>Shipping address</p>
+            <div>
+              <CssTextField required={true} ref={CountryRef} label='Enter Country/region' />
+            </div>
+            <div>
+              <CssTextField required={true} ref={NameRef} label='Enter your name' />
+            </div>
+            <div>
+              <CssTextField label="Apartment, suite, etc. (optional)" />
+            </div>
+            <div>
+              <CssTextField required={true} ref={CityRef} label='City' />
+            </div>
+            <div>
+              <CssTextField required={true} ref={StateRef} label='State' />
+            </div>
+            <div>
+              <CssTextField required={true} ref={PincodeRef} label='PinCode' />
+            </div>
+            <div>
+              <CssTextField required={true} ref={MobileRef} label="Enter Mobile Number" />
+            </div>
             <span style={{ fontSize: "0.85rem", display: "flex", margin: "0" }}>
               <input type="checkbox" />
-              <p>Email me with news and offers</p>
+              <p>Save this information for next time</p>
             </span>
           </div>
-        </div>
-        <div className="shipping-address">
-          <p className='heading-info'>Shipping address</p>
-          <div>
-            <CssTextField ref={CountryRef} label='Enter Country/region' />
+          <div className="footer-wrapper">
+            <Link to="/Cart" style={{ textDecoration: "none", cursor: "pointer", color: "#404040" }}>
+              <p className='return-cart'> Return to Cart</p>
+            </Link>
+            <Button type="submit" variant="contained" style={{ color: "white", fontSize: "12px", padding: "1rem" }}>Continue to shipping</Button>
           </div>
-          <div>
-            <CssTextField ref={NameRef} label='Enter your name' />
-          </div>
-          <div>
-            <CssTextField label="Apartment, suite, etc. (optional)" />
-          </div>
-          <div>
-            <CssTextField ref={CityRef} label='City' />
-          </div>
-          <div>
-            <CssTextField ref={StateRef} label='State' />
-          </div>
-          <div>
-            <CssTextField ref={PincodeRef} label='PinCode' />
-          </div>
-          <div>
-            <CssTextField ref={MobileRef} label="Enter Mobile Number" />
-          </div>
-          <span style={{ fontSize: "0.85rem", display: "flex", margin: "0" }}>
-            <input type="checkbox" />
-            <p>Save this information for next time</p>
-          </span>
-        </div>
-        <div className="footer-wrapper">
-          <Link to="/Cart" style={{ textDecoration: "none", cursor: "pointer", color: "#404040" }}>
-            <p className='return-cart'> Return to Cart</p>
-          </Link>
-          <Button onClick={handleCheckout} variant="contained" style={{ color: "white", fontSize: "12px", padding: "1rem" }}>Continue to shipping</Button>
-        </div>
+        </form>
       </div>
       <div className="summary-container">
         <div className="item-summary">
@@ -125,12 +121,11 @@ const CheckOut = () => {
             data?.map((item, i) => (
               <div className='cart-item-wrapper' key={i}>
                 <div>
-                  <img src={item.img} alt="" style={{ objectFit: 'contain', width: '20%', marginRight: "10px" }} />
-                  <p style={{ fontSize: "0.85rem", }}>{item?.name}&nbsp;</p>
-                  <p style={{ fontSize: "0.85rem", }}> | {item?.gender}</p>
+                  <img src={item?.product?.img} alt="" style={{ objectFit: 'contain', width: '20%', marginRight: "10px" }} />
+                  <p style={{ fontSize: "0.85rem", }}>{item?.product?.name}&nbsp;</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: "1.25rem", marginBottom: "1.2rem", fontWeight: "600" }}>{`₹${item?.original_price}`}</p>
+                  <p style={{ fontSize: "1.25rem", marginBottom: "1.2rem", fontWeight: "500" }}>{`₹${(+item?.product?.original_price?.split(',')?.join('')) * (+item?.product?.qty)}`}</p>
                 </div>
               </div>
             ))
@@ -143,18 +138,20 @@ const CheckOut = () => {
         <div className="subtotal">
           <div>
             <p style={{ fontSize: "1.25rem", color: "#404040" }}>Subtotal</p>
-            <p style={{ fontSize: "1.25rem", fontWeight: "700" }}>{`₹ ${cartAmount || 0}`}</p>
+            <p style={{ fontSize: "1.2rem", fontWeight: "500" }}>{`₹ ${subTotalPrice || 0}`}</p>
           </div>
           <div>
             <p style={{ fontSize: "1.25rem", color: "#404040" }}>Shipping</p>
-            <p style={{ fontSize: "1.25rem", fontWeight: "700" }}>Free</p>
+            <p style={{ fontSize: "1.2rem", fontWeight: "500" }}>Free</p>
           </div>
         </div>
         <div className="cart-total">
           <p style={{ fontSize: "1.25rem", color: "#404040" }}>Total</p>
-          <p style={{ fontSize: "1.5rem", fontWeight: "700" }}>{`Rs.${cartAmount || 0}`}</p>
+          <p style={{ fontSize: "1.5rem", fontWeight: "500" }}>{`Rs.${subTotalPrice || 0}`}</p>
         </div>
       </div>
+
+      <BasicModal open={open} onClose={onClose} />
     </div>
   )
 }

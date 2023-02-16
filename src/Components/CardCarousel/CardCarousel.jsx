@@ -2,21 +2,27 @@ import React from "react"
 import "./CardCarousel.css"
 import 'react-slideshow-image/dist/styles.css';
 import { Slide } from "react-slideshow-image";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProData from "../../data.json"
 
 
-const CardCarousel = ({handleClick}) => {
+const CardCarousel = () => {
+
+    const navigate = useNavigate()
+    const handleProduct = (id) => {
+        navigate(id)
+        window.scroll(0, 0)
+    }
 
     return (
         <div className='recommendation-slider'>
-            <Slide slidesToShow={4}>
+            <Slide slidesToShow={4} >
                 {
                     ProData.mensdata.map((item, i) => (
-                        <div key={i} className="slider-items" >
+                        <div key={i} className="slider-items" onClick={() => handleProduct(item.id)}>
                             <div>
                                 <Link to={`/products/${item.id}`}>
-                                    <img src={item.img} alt="" width="100%" style={{ cursor: "pointer" }} onClick={() => handleClick(item)} />
+                                    <img src={item.img} alt="" width="100%" style={{ cursor: "pointer" }} />
                                 </Link>
                             </div>
                             <div>

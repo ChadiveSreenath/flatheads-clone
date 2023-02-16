@@ -3,12 +3,15 @@
 }
 
 .logout-text{
-    text-align: end;
     font-size: 1.25rem;
-    cursor: pointer;
     text-decoration: underline;
     color: #303030;
     padding: 0 3rem;
+    display: flex;
+    justify-content: flex-end;
+}
+.logout-text p{
+    cursor: pointer;
 }
 
 .email-text{

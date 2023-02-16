@@ -14,14 +14,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Topbar.css'
 import SidebarItemcard from './Components/SidebarItemcard';
 import CloseIcon from '@mui/icons-material/Close';
-import { CartDataContext } from '../../Store/DataContext';
-import { useAuth } from '../../Firebase';
+import {  db } from "../../Firebase";
+import { CartDataContext, UserAuth } from '../../Store/DataContext';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useContext } from 'react';
 
 const pages = ['Shop', 'Limited Edition(New)', 'Shoes', "Classics", "About", "Help"];
 
 function ResponsiveAppBar() {
     const [openDrawer, setOpenDrawer] = React.useState(false)
-    const [openCart, setOpenCart] = React.useState(false)
+    const { openSideBarCart: openCart, setOpenSideBarCart: setOpenCart } = useContext(CartDataContext)
     const toggleDrawer = () => setOpenDrawer(prev => !prev)
     const toggleCart = () => setOpenCart(prev => !prev)
 
@@ -30,55 +34,38 @@ function ResponsiveAppBar() {
     const handleNavigate = (page) => {
         if (page === "Shoes") {
             history("/shoes")
-            window.location.reload(false)
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
+            window.scroll(0, 0);
         }
         else if (page === "Shop") {
             history("/products")
-            window.location.reload(false)
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
+            window.scroll(0, 0);
         }
         else if (page === "Classics") {
             history("/Collections")
-            window.location.reload(false)
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
+            window.scroll(0, 0);
         }
         else if (page === "Limited Edition(New)") {
             history("/LimitedEdition")
-            window.location.reload(false)
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
+            window.scroll(0, 0);
         }
 
     }
 
-    const { cartData: data, setCartData } = React.useContext(CartDataContext)
+    const [cartData, setcartData] = useState()
 
-    const updateLocalStorageData = (id, value) => {
-        const updatedData = data?.map(item => item.id === id ? { ...item, ...value } : item)
-        window.localStorage.setItem('cart', JSON.stringify(updatedData))
-        setCartData(updatedData)
-    }
+    const { cartData: ProductData } = useContext(CartDataContext)
+    const { subTotalPrice } = useContext(CartDataContext)
 
-    const ItemsSubtotalArray = () => data?.map(item => {
-        const price = + item.original_price.split(',').join('')
-        return price * (item?.quantity || 1)
-    })
+
+    const currentUser = UserAuth()
+
+    useEffect(() => {
+        onSnapshot(doc(db, "users", `${currentUser?.email}`), (doc) => {
+            setcartData(doc?.data()?.cartProducts)
+        })
+    }, [currentUser?.email])
 
     const location = useLocation();
-    const currentUser = useAuth()
-
 
     return (
         <AppBar position="fixed" sx={{ backgroundColor: "white", color: "black", height: '3.75rem', px: { md: "3rem" } }}>
@@ -92,21 +79,27 @@ function ResponsiveAppBar() {
                             aria-haspopup="true"
                             onClick={() => toggleDrawer()}
                             color="inherit"
+                            className='bs-none'
                         >
                             <MenuIcon />
                         </IconButton>
                     </Box>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex' } }}>
-                        <Link to="/" >
+                        <div onClick={() => {
+                            history("/")
+                            window.scroll(0, 0)
+                        }}
+                            style={{ cursor: "pointer" }}
+                        >
                             <img src={Logo} alt="" />
-                        </Link>
+                        </div>
                     </Box>
-
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', gap: '.5rem' } }}>
                         {pages.map((page) => (
                             <Button
+                                className='bs-none'
                                 disableRipple
                                 disableElevation
                                 disableFocusRipple
@@ -128,7 +121,6 @@ function ResponsiveAppBar() {
                                 <div className='disable-focus'>
                                     <Link to="/login" >
                                         <PersonIcon />
-
                                     </Link>
                                 </div>
                                 :
@@ -148,7 +140,7 @@ function ResponsiveAppBar() {
                                 :
                                 <div onClick={() => toggleCart()} style={{ display: "flex", alignItems: "center", cursor: "pointer" }} >
                                     <BasketIcon />
-                                    <p className='cart-count'>{`${data?.length || 0}`}</p>
+                                    <p className='cart-count'>{`${ProductData?.length || 0}`}</p>
                                 </div>
                         }
 
@@ -160,7 +152,7 @@ function ResponsiveAppBar() {
                                     <PersonIcon />
                                     <p>Login</p>
                                 </label>
-                                <IconButton onClick={() => toggleDrawer()} >
+                                <IconButton onClick={() => toggleDrawer()} className='bs-none'>
                                     <CloseIcon />
                                 </IconButton>
                             </div>
@@ -180,31 +172,35 @@ function ResponsiveAppBar() {
 
                         <div className="cart-drawer-header">
                             <p>Cart</p>
-                            <IconButton onClick={() => toggleCart()}>
+                            <IconButton onClick={() => toggleCart()} className='bs-none'>
                                 <CloseIcon />
                             </IconButton>
                         </div>
                         <div className="cart-drawer-summary">
                             {
-                                data?.map((item, i) => (
-                                    <SidebarItemcard item={item} key={i} updateLocalStorageData={updateLocalStorageData} setCartData={setCartData} data={data}/>
+                                cartData?.map((item, i) => (
+                                    <SidebarItemcard item={item?.product} key={i} />
                                 ))
                             }
                         </div>
                         <div className="drawer-subtotal-container">
                             <p className='subtotal-text'>Subtotal</p>
                             <p className='full-total-text'>
-                                {`Rs. ${ItemsSubtotalArray()?.reduce((def, curr) => def + curr, 0) || 0}`}
+                                {`Rs. ${subTotalPrice || 0}`}
                             </p>
                             <p>Tax included. Shipping calculated at checkout.</p>
                             <p>Orders will be processed in INR.</p>
-                            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-                                <Link to="/checkout" style={{ textDecoration: "none" }}>
-                                    <Button variant="contained" sx={{ color: "white", fontSize: "12px", padding: " .75rem 2.2rem", backgroundColor: "black", width: "90%", "&:hover": { backgroundColor: "white", color: "black" } }}>CheckOut</Button>
-                                </Link>
-                                <Link to="/cart" style={{ textDecoration: "none" }}>
-                                    <Button variant="contained" sx={{ color: "white", fontSize: "12px", padding: " .75rem 2.2rem", backgroundColor: "black", width: "90%", "&:hover": { backgroundColor: "white", color: "black" } }}>View Cart</Button>
-                                </Link>
+                            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem" }}>
+                                <Button onClick={() => {
+                                    history("/checkout")
+                                    window.scrollTo(0, 0)
+                                    setOpenCart(false)
+                                }} variant="contained" sx={{ color: "white", fontSize: "12px", padding: " .75rem 2.2rem", backgroundColor: "black", width: "90%", "&:hover": { backgroundColor: "white", color: "black" } }}>CheckOut</Button>
+                                <Button onClick={() => {
+                                    history("/cart")
+                                    setOpenCart(false)
+                                    window.scrollTo(0, 0)
+                                }} variant="contained" sx={{ color: "white", fontSize: "12px", padding: " .75rem 2.2rem", backgroundColor: "black", width: "90%", "&:hover": { backgroundColor: "white", color: "black" } }}>View Cart</Button>
                             </div>
                         </div>
                     </SwipeableTemporaryDrawer>
